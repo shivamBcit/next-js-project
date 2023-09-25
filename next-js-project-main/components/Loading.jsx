@@ -2,13 +2,14 @@
 import loading  from "./loading.gif"
 import Image from "next/image";
 
+const { primary, secondary, animationBg } = process.env.themeColors;
 
 
 import { Bars, Audio } from "react-loader-spinner";
 
 const Loading = (props) => {
   return (
-    <div className=" grid   h-[26.5rem] place-items-center bg-[#02222B]">
+    <div  style={{ background: animationBg }} className=" grid   h-[26.5rem] place-items-center">
       <div>
         {/* <Bars
           height="80"

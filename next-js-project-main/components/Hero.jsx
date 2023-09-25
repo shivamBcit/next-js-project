@@ -1,5 +1,7 @@
 
-
+  // Access the theme colors and logo URL from process.env
+  const { primary, secondary, textColor } = process.env.themeColors;
+  const logoUrl = process.env.logoUrl;
 
 
 const Hero = () => {
@@ -8,7 +10,7 @@ const Hero = () => {
       <h2 className=" font-red-hat-displat text-left sm:text-center text-t-24 sm:text-t-32 font-bold text-[#EDE7E3]">
         LAB LINGO
       </h2>
-      <p className="  font-red-hat-displat text-sky-blue text-center text-t-base sm:text-t-20 font-bold">
+      <p  style={{ color: textColor }} className="  font-red-hat-displat  text-center text-t-base sm:text-t-20 font-bold">
         Simplified and Accessible Medical Reports
       </p>
     </div>

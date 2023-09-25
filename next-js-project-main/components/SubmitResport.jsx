@@ -28,6 +28,11 @@ selectedLanguagefunc,
   const [lang, setlang] = useState("English")
 
 
+
+  const { primary, secondary, animationBg, textColor, secondarytextColor} = process.env.themeColors;
+const logoUrl = process.env.logoUrl;
+
+
   // function selectedLanguagefunc(event){
   //   let l = event.target.value;
   //   console.log("seleted language", l);
@@ -41,16 +46,16 @@ selectedLanguagefunc,
         <h3 className=" text-t-20 font-red-hat-displat font-bold">
           Submit Report
         </h3>
-        <p className=" text-t-base font-semibold text-primary font-red-hat-displat">
+        <p style={{ color: textColor  }}  className=" text-t-base font-semibold text-primary font-red-hat-displat">
           Upload your report, select your preferred language and generate of
           your comprehensive medical report instantly. Let’s get started.{" "}
         </p>
       </div>
       <form onSubmit={handleFileUpload } className=" space-y-4">
         <div className=" flex items-center  gap-6">
-          <label
+          <label style={{ background: secondary , textColor: secondarytextColor }} 
             htmlFor="fileInput"
-            className="gap-3 inline-flex bg-primary text-[#02222B] active:bg-opacity-40 items-center justify-center rounded-sm text-base font-normal ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-[42px] font-pt-sens px-4"
+            className="gap-3 inline-flex   active:bg-opacity-40 items-center justify-center rounded-sm text-base font-normal ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-[42px] font-pt-sens px-4"
           >
             <FiUpload size={24} /> Upload Health Report
           </label>
@@ -76,7 +81,7 @@ selectedLanguagefunc,
           </Select> */}
 
 
-            <select  className="flex h-[42px]  items-center justify-between rounded-md !border-2 border-primary bg-background px-3 py-2 text-t-20 ring-offset-background font-normal placeholder:text-[#64DDFF] !font-pt-sens  text-[#64DDFF] focus:outline-none focus:ring-0  disabled:cursor-not-allowed disabled:opacity-50
+            <select style={{ color: textColor , borderColor: secondary}}   className="flex h-[42px]  items-center justify-between rounded-md !border-2 border-primary bg-background px-3 py-2 text-t-20 ring-offset-background font-normal  !font-pt-sens  focus:outline-none focus:ring-0  disabled:cursor-not-allowed disabled:opacity-50
             
               
               "  onChange={ selectedLanguagefunc }>  
@@ -106,7 +111,11 @@ selectedLanguagefunc,
         </div>
       )}
       <div className=" pt-10">
-        <div className=" text-sm pb-1 font-red-hat-displat text-primary font-normal border-b border-primary">
+        <div 
+        
+        // style={{  color: secondarytextColor }}
+
+        className=" text-sm pb-1 font-red-hat-displat text-primary font-normal border-b border-primary">
           Uploaded Report
         </div>
         <p className=" py-4 text-sm  italic font-red-hat-displat font-normal">

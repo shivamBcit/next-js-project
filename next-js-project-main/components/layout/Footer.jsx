@@ -6,11 +6,17 @@ import logo from "@/public/athenia.svg";
 import Image from "next/image";
 import Link from "next/link";
 const Footer = () => {
+
+  const { primary, secondary, footerBg} = process.env.themeColors;
+  const logoUrl = process.env.logoUrl;
+
+
+
   return (
     <div className="    static bottom-0 left-0 right-0 pt-10">
-      <footer className="  h-[90px] flex items-center  bg-[#155467]">
+      <footer style={{ background: footerBg  }} className="  h-[90px] flex items-center  ">
         <div className=" container flex items-center   gap-6 flex-wrap lg:flex-nowrap lg:gap-x-[200px]">
-          <Image src={logo} alt="logo" />
+          <Image src={logoUrl} alt="logo" width="102" height="90" />
           <div className=" flex items-center gap-4">
             <ul className="s flex items-center gap-4">
               <li>

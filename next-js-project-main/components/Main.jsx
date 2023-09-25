@@ -1,14 +1,23 @@
 "use client";
 import logo from "@/public/Orange tint 1.svg";
+// import logo from "@/public/athenia.svg";
+
 import Image from "next/image";
 import { useState, useEffect } from "react";
 import { FiDownload } from "react-icons/fi";
 import Loading from "./Loading";
 import Result from "./Result";
 import SubmitResport from "./SubmitResport";
-import CustomFileUpload from "./CustomFileUpload";
 
 const Main = () => {
+
+
+
+  
+
+  const { primary, secondary, animationBg, textColor, secondarytextColor } = process.env.themeColors; // theme color variables
+  const logoUrl = process.env.logoUrl;
+
   const [tenantId, setTenantId] = useState("");
   const [requestId, setRequestId] = useState("");
   const [status, setStatus] = useState("");
@@ -19,8 +28,12 @@ const Main = () => {
   const [selectedLanguage, setSelectedLanguage] = useState("");
   const [response, setResponse] = useState(null);
   const [loading, setLoading] = useState(false); // Add loading state
-  const [pdfContent, setPdfContent] = useState(""); // Add state to store PDF content
+  // const [pdfContent, setPdfContent] = useState(""); // Add state to store PDF content
   const [showPdfDetails, setShowPdfDetails] = useState(false); // Add state to control content
+
+
+
+
 
   useEffect(() => {
     // This function will run when the component is mounted (app loaded).
@@ -49,27 +62,20 @@ const Main = () => {
     console.log("uploaded file", selectedFile);
     console.log("new uploaded file", typeof selectedFile);
 
-
     // Handle the selected file as needed
   };
 
-
-
-
-  function selectedLanguagefunc(event){
+  function selectedLanguagefunc(event) {
     let l = event.target.value;
-    setSelectedLanguage(l)
+    setSelectedLanguage(l);
   }
-
-
-
 
   const handleFileUpload = async (e) => {
     e.preventDefault();
     setShowPdfDetails(true);
     if (selectedFile) {
       console.log("file is present", selectedFile);
-console.log("seletd lenaguage after uploading file",selectedLanguage);
+      console.log("seletd lenaguage after uploading file", selectedLanguage);
       // ------------------------------
       // show loading after hitting submit
       setLoading(true);
@@ -161,15 +167,8 @@ console.log("seletd lenaguage after uploading file",selectedLanguage);
             handleFileUpload={handleFileUpload}
             response={response}
             handleRemoveFile={handleRemoveFile}
-            
-            selectedLanguagefunc= { selectedLanguagefunc }
-
-
-
+            selectedLanguagefunc={selectedLanguagefunc}
           />
-
-
-
         </div>
         <div className="w-full col-span-11 lg:col-span-6">
           <div className="l">
@@ -180,8 +179,8 @@ console.log("seletd lenaguage after uploading file",selectedLanguage);
               </button>
             </div>
             <div className="py-4 border-l pl-5 border-[#787177] ">
-              <div className="px-4 bg-primary flex items-center justify-between rounded-t-md py-4">
-                <h3 className="text-t-base font-pt-sens font-bold text-[#02222B]">
+              <div style={{ background: secondary }}  className="px-4  flex items-center justify-between rounded-t-md py-4">
+                <h3 style={{textColor: secondarytextColor }} className="text-t-base font-pt-sens font-bold ">
                   Preview
                 </h3>
               </div>
@@ -190,16 +189,16 @@ console.log("seletd lenaguage after uploading file",selectedLanguage);
               ) : showPdfDetails ? (
                 <Result result={results} />
               ) : (
-                <div className=" bg-[#02222B] grid place-items-center  space-y-4  px-4 py-10 text-primary font-medium text-2xl text-center">
-                  <h3> Please Upload PDF</h3>
+                <div style={{ background: animationBg }} className=" grid place-items-center  space-y-4  px-4 py-10 text-primary font-medium text-2xl text-center">
+                  <h3 style={{ color: textColor  }} > Please Upload PDF</h3>
                 </div>
               )}
-              <div className="px-4 bg-primary flex items-center justify-end rounded-b-md py-4">
+              <div  style={{ background: secondary }}  className="px-4  flex items-center justify-end rounded-b-md py-4">
                 <div className="inline-flex items-center gap-3">
-                  <h3 className="text-t-base font-pt-sens font-bold text-[#02222B]">
+                  <h3 style={{textColor: secondarytextColor }}  className="text-t-base font-pt-sens font-bold ">
                     Powered by
                   </h3>
-                  <Image src={logo} alt="logo" />
+                  <Image src={logoUrl} alt="logo" width='46' height="39" />
                 </div>
               </div>
             </div>

@@ -3,6 +3,13 @@ import Header from "@/components/layout/Header";
 import { PT_Sans, Public_Sans, Red_Hat_Display } from "next/font/google";
 import "./globals.css";
 
+
+
+
+const primaryBackgroundColor = process.env.themeColors.primaryBackgroundColor;
+const bgUrl = process.env.bgUrl;
+
+
 const pt = PT_Sans({
   subsets: ["latin"],
   variable: "--pt-sens",
@@ -29,7 +36,8 @@ export default function RootLayout({ children }) {
   
   return (
     <html lang="en">
-      <body
+      <body style={{ background: `url(${bgUrl}) , ${primaryBackgroundColor} ` ,  }}
+      
         className={`${pt.variable} ${redHatDisplay.variable} ${publicSens.variable}`}
       >
         <main className=" h-full relative">
